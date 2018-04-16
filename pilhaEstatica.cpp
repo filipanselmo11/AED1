@@ -79,7 +79,7 @@ void Pilha::empilha(Tarefa t){
 void Pilha::mostra(){
     for(int i = fundo; i <= topo; i++){
          tarefa[i].printInfo();
-         cout << endl;        
+         cout << endl;       
     }
 }
 
