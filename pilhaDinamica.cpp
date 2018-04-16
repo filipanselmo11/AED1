@@ -76,7 +76,7 @@ class Pilha{
         }
         void empilha(Tarefa t);
         void mostra();
-        void desempilha();
+        void desempilha(Tarefa t);
 };
 
 void Pilha::empilha(Tarefa t){
@@ -100,4 +100,35 @@ void Pilha::desempilha(Tarefa t){
     topo = topo->getProx();
     t = topo->getTarefa();
     delete aux;
+}
+
+int main(){
+    Tarefa a(1, "Dormir");
+    Tarefa b(2, "Fazer rango");
+    Tarefa c(3, "Dormir de novo");
+    Tarefa d(4, "Tocar violão");
+    Tarefa e(5, "Jogar video game");
+    Tarefa f(6, "Dormir de novo");
+
+    Pilha p;
+    p.empilha(a);
+    p.empilha(b);
+    p.empilha(c);
+    p.empilha(d);
+    p.empilha(e);
+    p.empilha(f);
+
+    p.mostra();
+    cout << "<=================================================>" << endl;
+    p.desempilha(a);
+    p.mostra();
+    cout << "<=================================================>" << endl;
+    p.desempilha(e);
+    p.mostra();
+    cout << "<=================================================>" << endl;
+    p.desempilha(d);
+    p.mostra();
+    
+    return 0;
+    
 }
