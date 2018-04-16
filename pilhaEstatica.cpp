@@ -2,18 +2,52 @@
 
 using namespace std;
 
+class Tarefa{
+    private:
+        int id;
+        string desc;
+    public:
+        Tarefa(){};
+        Tarefa(int id, string desc){
+            this->id = id;
+            this->desc = desc;
+        }
+        void setId(int id){
+            this->id = id;
+        }
+        
+        void setDesc(string desc){
+            this->desc = desc;
+        }
+
+        int getId(){
+            return id;
+        }
+
+        string getDesc(){
+            return desc;
+        }
+        
+        void printInfo(){
+            cout << id << "-";
+            cout << desc;
+        }
+};
+
 class Pilha{
     private:
         int topo;
         int fundo;
-        string *item;
+        Tarefa *tarefa;
+        int TAM;
     public:
-        Pilha(int max){
+        Pilha(int tam){
             fundo = 0;
             topo = fundo;
-            item = new string[max];
+            TAM = tam;
+            tarefa = new Tarefa[TAM];
         }
-
+        /*
         void setTopo(int topo){
             this->topo = topo;
         }
@@ -27,45 +61,45 @@ class Pilha{
 
         int getFundo(){
             return fundo;
-        }
-        void empilha(string it);
+        }*/
+        void empilha(Tarefa t);
         void mostra();
-        void desempilha(string it);
+        void desempilha(Tarefa t);
 };
 
-void Pilha::empilha(string it){
-    if(topo == max ){
+void Pilha::empilha(Tarefa t){
+    if(topo == tam ){
         cout << "pilha cheia" << endl;
     }else{
         topo++;
-        item[topo] = it;
+        tarefa[topo] = t;
     }
 }
 
 void Pilha::mostra(){
     for(int i = fundo; i <= topo; i++){
-        cout << item[i];        
+         tarefa[i].printInfo();
+         cout << endl;        
     }
-    cout << endl;
 }
 
-void Pilha::desempilha(string it){
+void Pilha::desempilha(Tarefa t){
     if(topo == fundo){
         cout << "Pilha vazia" << endl;
     }else{
-        it = item[topo];
+        t = tarefa[topo];
         topo--;
     }
 }
 
 int max(){
     Pilha p(6);
-    p.empilha("Filip");
-    p.empilha("Luiza");
-    p.empilha("Julia");
-    p.empilha("Bruna");
-    p.empilha("Luna");
-    p.empilha("Maria");
+    p.empilha(1,"Filip");
+    p.empilha(2,"Luiza");
+    p.empilha(3,"Julia");
+    p.empilha(4,"Bruna");
+    p.empilha(5,"Luna");
+    p.empilha(6,"Maria");
     p.mostra();
     return 0;
     
